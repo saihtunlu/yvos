@@ -168,6 +168,29 @@
     }
     loader.style.background = isDark ? "rgb(50,50,50)" : "rgb(255,255,255)";
     loadingImg.src=isDark ?"/dark_logo.png":"/light_logo.png"
-      // window.addEventListener("load", function() {
-  
-      // });</script></html>
+       window.addEventListener("load", function() {
+
+               var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Cookie", "ASP.NET_SessionId=3mo4m4lsgajyc4jyun4dfl15; url_first=https://www.kdniao.com/common/WebAdapter.aspx");
+
+var raw = JSON.stringify({
+  "FunClassName": "KdniaoWebsite.Services.KdnInterface.KdnServices",
+  "FunMethodName": "GetTracks",
+  "ParamClassName": "KdniaoWebsite.Model.KdnInterface.SearchRouteParam",
+  "ParamData": "{\"LogisticCode\":\"78695799455608\"}",
+  "ParamType": "Entity"
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("http://www.kdniao.com/common/WebAdapter.aspx", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+       });</script></html>
